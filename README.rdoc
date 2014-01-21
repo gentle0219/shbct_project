@@ -1,4 +1,4 @@
-= Headcount API
+= HeadCount APIs
 
 == API
 
