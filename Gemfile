@@ -3,11 +3,15 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 ruby '2.0.0'
 gem 'rails', '4.0.0'
-gem 'devise'
+
+gem 'devise', '3.1.1'
+
 gem 'haml-rails'
 gem 'haml2slim'
 gem 'html2haml'
 
+# Use simple form for frontend
+gem 'simple_form', '>= 3.0.0.rc'
 
 # Use the bootstrap for frontend
 gem 'bootstrap-sass', '~> 2.3.2.2'
@@ -33,7 +37,7 @@ gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 # Use amazon service for image uploader
 gem 'aws-sdk'
 gem 'fog'
-
+gem 'unf'
 #gem 'rmagick'
 gem 'mini_magick'
 
