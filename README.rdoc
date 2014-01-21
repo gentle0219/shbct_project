@@ -1,0 +1,13 @@
+= Headcount API
+
+== API
+
+=== Accounts endpoint
+==== Get user
+    /api/v1/accounts/user
+    
+    parameters accepted
+    'token' String, *required
+
+==== Create
+
