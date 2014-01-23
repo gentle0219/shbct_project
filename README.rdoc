@@ -3,6 +3,7 @@
 == API
 
 === Accounts endpoint
+
 ==== Sign In(from app's account)
 		
 		POST: /api/v1/accounts/sign_in
@@ -28,7 +29,8 @@
 
 
 ==== Account Settings
-==== Upload avatar
+
+===== Upload avatar
     POST /api/v1/accounts/upload_avatar
 
     parameters accepted
