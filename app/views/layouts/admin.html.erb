@@ -6,7 +6,7 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= params[:controller]%>_<%= params[:action]%>">
+<body class="<%= params[:controller].gsub("/","_")%>_<%= params[:action]%>">
   
   <div class="navbar navbar-fixed-top">
     <nav class="navbar-inner">
