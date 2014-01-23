@@ -66,7 +66,7 @@ class HomeController < ApplicationController
               auth_token:params[:token],
               password:password,
               user_name:user_name,
-              from_social:from_social
+              from_social:from_social,
               phone:phone)
         if user.save
         	user = sign_in(:user, user)
