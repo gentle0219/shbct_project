@@ -4,6 +4,7 @@
 
 === Accounts endpoint
 
+==== Account Settings
 ==== Sign In(from app's account)
 		
 		POST: /api/v1/accounts/sign_in
@@ -26,9 +27,6 @@
 
 		parameters accepted
 		'email'			String,			*required
-
-
-==== Account Settings
 
 ===== Upload avatar
     POST /api/v1/accounts/upload_avatar
