@@ -4,17 +4,28 @@
 
 === Accounts endpoint
 ==== Sign In(from app's account)
-		/api/v1/accounts/sign_in
+		
+		POST: /api/v1/accounts/sign_in
+		
 		parameters accepted
 		'email'			String,			*required
 		'password'	String, 		*requried
 
 ==== Sign In(from social)
-		/api/v1/accounts/create
+		
+		POST: /api/v1/accounts/create
+		
 		parameters accepted
 		'email'			String,			*required
 		'token'			String, 		*requried
 		'social'		String,			*required(facebook, twitter, google)
+
+==== Sign Out
+		POST: 'api/v1/accounts/sign_out'
+
+		parameters accepted
+		'email'			String,			*required
+
 
 ==== Account Settings
 ==== Upload avatar
@@ -71,7 +82,7 @@
     GET: /api/v1/accounts/user
 		
 		parameters accepted
-    'token' 									String, 		*required
+    'token'	String, 		*required
     
     results: JSON
     	{user_name,email,phone,social}
