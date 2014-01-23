@@ -4,88 +4,90 @@
 
 === Accounts endpoint
 
-==== Account Settings
 ==== Sign In(from app's account)
-		
-		POST: /api/v1/accounts/sign_in
-		
-		parameters accepted
-		'email'			String,			*required
-		'password'	String, 		*requried
+    
+    POST: /api/v1/accounts/sign_in
+    
+    parameters accepted
+    'email'      String,      *required
+    'password'  String,     	*requried
 
 ==== Sign In(from social)
-		
-		POST: /api/v1/accounts/create
-		
-		parameters accepted
-		'email'			String,			*required
-		'token'			String, 		*requried
-		'social'		String,			*required(facebook, twitter, google)
+    
+    POST: /api/v1/accounts/create
+    
+    parameters accepted
+    'email'      String,      *required
+    'token'      String,     	*requried
+    'social'     String,      *required(facebook, twitter, google)
 
 ==== Sign Out
-		POST: 'api/v1/accounts/sign_out'
+    POST: 'api/v1/accounts/sign_out'
 
-		parameters accepted
-		'email'			String,			*required
+    parameters accepted
+    'email'      String,      *required
+
+
+==== Account Settings
 
 ===== Upload avatar
     POST /api/v1/accounts/upload_avatar
 
     parameters accepted
-    'token' 	String, 		*required
-    'avatar' 	Image Data, *required
+    'token'    String,     *required
+    'avatar'   Image Data, *required
 
 ===== Change User Name
     POST /api/v1/accounts/change_user_name
 
     parameters accepted
-    'token' 			String, 		*required
-    'user_name' 	String, 		*required
+    'token'       String,     *required
+    'user_name'   String,     *required
 
 ===== Change Password
     POST /api/v1/accounts/change_user_name
 
     parameters accepted
-    'token' 				String, 		*required
-    'old_pswd' 			String, 		*required
-    'new_pswd' 			String, 		*required
-    'confirm_pswd' 	String, 		*required
+    'token'          String,     *required
+    'old_pswd'       String,     *required
+    'new_pswd'       String,     *required
+    'confirm_pswd'   String,     *required
 
 ===== Change Email Address
     POST /api/v1/accounts/change_email
 
     parameters accepted
-    'token' 				String, 		*required
-    'email'		 			String, 		*required
+    'token'           String,     *required
+    'email'           String,     *required
 
 ===== Change Phone Number
     POST /api/v1/accounts/change_phone
 
     parameters accepted
-    'token' 				String, 		*required
-    'phone'		 			String, 		*required
+    'token'           String,     *required
+    'phone'           String,     *required
 
 ===== Settings Notification
     POST /api/v1/accounts/notifications_setting
 
     parameters accepted
-    'token' 									String, 		*required
-    'event_reminders'					Boolean
-    'chat_notifications'			Boolean
-    'new_friend_events'				Boolean
-    'people_joining_events'		Boolean
-    'people_leaving_events'		Boolean
-    'event_changes'						Boolean
+    'token'                    String,     *required
+    'event_reminders'          Boolean
+    'chat_notifications'       Boolean
+    'new_friend_events'        Boolean
+    'people_joining_events'    Boolean
+    'people_leaving_events'    Boolean
+    'event_changes'            Boolean
 
 ==== Get User Info
 ===== Get User account info
     GET: /api/v1/accounts/user
-		
-		parameters accepted
-    'token'	String, 		*required
+    
+    parameters accepted
+    'token'  String,     *required
     
     results: JSON
-    	{user_name,email,phone,social}
+      {user_name,email,phone,social}
 
 ===== Get User notifications setting info
       GET: /api/v1/accounts/notifications_setting
