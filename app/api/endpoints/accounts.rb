@@ -182,6 +182,47 @@ module Endpoints
           {:failure => "cannot find user"}
         end
       end
+
+
+      # Add Friends
+      # Post: /api/v1/accounts/friend
+      # parameters:
+      #   token:    String *required
+      # results: 
+      #   friend list json
+      post :add_friend do
+        user = User.find_by_token params[:token]
+        name        = params[:name]
+        email       = params[:email]
+        avatar      = params[:avatar]
+        from_social = params[:social]
+        if user.present?
+          friend = user.friends.build(name:name,email:email,avatar:avatar)
+          if friends.save
+            {success: "added friend"}
+          else
+            {failure: friend.errors.messages}
+          end
+        else
+          {:failure => "cannot find user"}
+        end
+      end
+
+      # Get Friends
+      # GET: /api/v1/accounts/friends
+      # parameters:
+      #   token:    String *required
+      # results: 
+      #   friend list json
+      get :friends do
+        user = User.find_by_token params[:token]        
+        if user.present?
+          friends = user.friends.map{|f| {id:f.id,name:f.name,email:f.email,avatar:f.avatar_url}}
+          {success: friends}
+        else
+          {:failure => "cannot find user"}
+        end
+      end
     end
   end
 end

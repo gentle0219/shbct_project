@@ -102,6 +102,27 @@
       {event_reminders,chat_notifications,new_friend_events,people_joining_events,people_leaving_events,event_changes}
 ==== Settings
 
+==== Add friend
+    POST /api/v1/accounts/add_friend
+
+    parameters accepted
+    'token'         String,     *required
+    'name'          String
+    'email'         String
+    'avatar'        Image Data
+    'social'        String(phone,facebook)
+    
+==== Get my friends
+    GET: /api/v1/accounts/friends
+      
+    parameters accepted
+    token:    String *required
+      
+    results: JSON
+    {id,name,email,avatar}
+
+
+
 
 
 === Event APIs
