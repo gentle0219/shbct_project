@@ -13,4 +13,12 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def host_name
+    if Rails.env.production?
+      "http://headcountapp.herokuapp.com"
+    else
+      "http://192.168.0.55:3005"
+    end
+  end
 end

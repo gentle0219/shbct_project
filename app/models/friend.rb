@@ -10,5 +10,5 @@ class Friend
 
   field :from_social,   :type => String
 
-  belongs_to :user
+  belongs_to :user  
 end

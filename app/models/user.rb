@@ -89,7 +89,7 @@ class User
       if Rails.env.production?
         self.avatar.url
       else
-        "http://192.168.0.55:3000" + self.avatar.url.gsub("#{Rails.root.to_s}/public/user/", "/user/")
+        "http://192.168.0.55:3005" + self.avatar.url.gsub("#{Rails.root.to_s}/public/user/", "/user/")
       end
     end
   end

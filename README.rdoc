@@ -10,7 +10,7 @@
     
     parameters accepted
     'email'      String,      *required
-    'password'  String,     	*requried
+    'password'   String,      *requried
 
 ==== Sign In(from social)
     
@@ -18,7 +18,7 @@
     
     parameters accepted
     'email'      String,      *required
-    'token'      String,     	*requried
+    'token'      String,      *requried
     'social'     String,      *required(facebook, twitter, google)
 
 ==== Sign Out
@@ -36,6 +36,9 @@
     parameters accepted
     'token'    String,     *required
     'avatar'   Image Data, *required
+    
+    
+    curl -F "token=gtr-YzGepAiTJv8yCed1" -F "avatar=@/Volumes/Work/Images/avatar.png" /api/v1/accounts/upload_avatar
 
 ===== Change User Name
     POST /api/v1/accounts/change_user_name
@@ -98,5 +101,62 @@
       results: JSON
       {event_reminders,chat_notifications,new_friend_events,people_joining_events,people_leaving_events,event_changes}
 ==== Settings
+
+
+
+=== Event APIs
+
+==== Get My Events
+      GET: /api/v1/events/my_events
+      
+      parameters accepted
+      token:    String *required
+      
+      results: JSON
+      {name,user_name,date,location,img}
+
+==== Get Upcomming events
+      GET: /api/v1/events/upcoming_events
+      
+      parameters accepted
+      token:    String *required
+      
+      results: JSON
+      {name,user_name,date,location,img}
+
+==== Get Previous events
+      GET: /api/v1/events/previous_events
+      
+      parameters accepted
+      token:    String *required
+      
+      results: JSON
+      {name,user_name,date,location,img}
+
+==== Get Last events
+      GET: /api/v1/events/last_events
+      
+      parameters accepted
+      token:    String *required
+      
+      results: JSON
+      {name,user_name,date,location,img}
+
+==== Create my event
+      POST: /api/v1/events/create_event
+      
+      parameters accepted
+      token:            String *required
+      save_state:       String *required        draft or published
+      name:             String *required        event name
+      location:         String *required
+      date:             String *required        2014-1-14,14
+      description:      String *required
+      enable_chat:      Boolean *required       true or false
+      photo:            image data
+      friend_ids:       String *required        Invited friends ids
+
+      results: Success String      
+      
 
 

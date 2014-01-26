@@ -53,13 +53,13 @@ module Endpoints
       #   return success string
       post :upload_avatar do
         user = User.find_by_token params[:token]
+        return {failure: 'Please select avatar'} if params[:avatar].blank?
         if user.present?
           user.assign_attributes(avatar:params[:avatar])          
           #if user.avatar.file.size.to_f/(1024*1024) > 0.3
           #  {:failure => 'Please use image of 200 X 200'}
           #else
-            if user.save
-              user.set_history('Avata Upload')              
+            if user.save              
               {:success => 'uploaded avatar successfully'}
             else
               {:failure => 'invalid image data'}

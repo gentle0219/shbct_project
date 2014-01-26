@@ -1,4 +1,4 @@
-class Event
+class Photo
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -7,6 +7,7 @@ class Event
   field :photo,         		:type => String
 
   belongs_to :photoble, 		:polymorphic => true
+
   def photo_url
   	if self.photo.url.nil?
   		""
@@ -18,4 +19,5 @@ class Event
       end
   	end
   end
+
 end
