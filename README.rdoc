@@ -136,7 +136,7 @@
       results: JSON
       {name,user_name,date,location,img}
 
-==== Get Upcomming events
+==== Get Upcoming events
       GET: /api/v1/events/upcoming_events
       
       parameters accepted

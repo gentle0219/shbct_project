@@ -21,6 +21,11 @@ class Event
 
   validates_presence_of :name, :location, :event_date, :description, :friend_ids
 
+  scope :upcomming_events, -> {where(:created_at.gte => Time.zone.now).order_by('created_at ASC')}
+  scope :previous_events, -> {where(:created_at.lt => Time.zone.now).order_by('created_at DESC')}
+  scope :last_events, -> {order_by('created_at DESC')}
+  
+
   def invited_friends
   	self.friends
   end
@@ -52,9 +57,9 @@ class Event
     end
   end
 
-  def upcomming_events
-  end
+  #def upcomming_events
+  #end
 
-  def previously_events
-  end
+  #def previously_events
+  #end
 end

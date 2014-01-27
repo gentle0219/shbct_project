@@ -46,16 +46,64 @@ module Endpoints
         end
       end
 
+      # Get upcoming events
+      # GET: /api/v1/events/upcoming_events
+      # parameters:
+      #   token:      String *required
+      # results: 
+      #   return my events data json
       get :upcoming_events do
-        { :failure => 'working now' }
+        user = User.find_by_token params[:token]
+        if user.present?
+          events = user.events.upcoming_events
+          if events.present?
+            {success: events.map{|e| {name:e.name,user_name:e.user.user_name,date:e.date,location:e.location,img:e.main_img}}}
+          else
+            {failure: "cannot find your events"}
+          end
+        else
+          {:failure => "cannot find user"}
+        end
       end
 
+      # Get previous events
+      # GET: /api/v1/events/previous_events
+      # parameters:
+      #   token:      String *required
+      # results: 
+      #   return my events data json
       get :previous_events do
-        { :failure => 'working now' }
+        user = User.find_by_token params[:token]
+        if user.present?
+          events = user.events.previous_events
+          if events.present?
+            {success: events.map{|e| {name:e.name,user_name:e.user.user_name,date:e.date,location:e.location,img:e.main_img}}}
+          else
+            {failure: "cannot find your events"}
+          end
+        else
+          {:failure => "cannot find user"}
+        end
       end
 
+      # Get last events
+      # GET: /api/v1/events/last_events
+      # parameters:
+      #   token:      String *required
+      # results: 
+      #   return my events data json
       get :last_events do
-        { :failure => 'working now' }
+        user = User.find_by_token params[:token]
+        if user.present?
+          events = user.events.last_events
+          if events.present?
+            {success: events.map{|e| {name:e.name,user_name:e.user.user_name,date:e.date,location:e.location,img:e.main_img}}}
+          else
+            {failure: "cannot find your events"}
+          end
+        else
+          {:failure => "cannot find user"}
+        end
       end
 
       # Create Event
@@ -97,7 +145,7 @@ module Endpoints
         end
       end
 
-      
+
 
 
     end
