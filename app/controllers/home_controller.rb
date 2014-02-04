@@ -58,7 +58,7 @@ class HomeController < ApplicationController
       phone      = params[:phone]
       user = User.any_of({:email=>email},{:auth_token => params[:token]}).first
       if user.present?
-        user.update_attributes( user_name:nick_name, phone:phone, )
+        user.update_attributes( user_name:user_name, phone:phone, )
         user = sign_in(:user, user)
         render json: {:success => user.authentication_token}
       else
@@ -70,6 +70,7 @@ class HomeController < ApplicationController
               phone:phone)
         if user.save
         	user = sign_in(:user, user)
+          render json: {:success => user.authentication_token}
         else
           render :json => {:failure => user.errors.messages}
         end
