@@ -47,7 +47,7 @@ class User
   field :role,                      :type => String
   field :active,                    :type => Boolean,   :default => true
 
-  field :from_social,               :type => String     # Social login status
+  field :from_social,               :type => String,    :default => ""     # Social login status
 
 
   field :auth_token,                :type => String
@@ -98,4 +98,12 @@ class User
   def self.find_by_token(token)
     User.where(:authentication_token=>token).first
   end  
+
+  def social_state
+    if from_social.present?
+      from_social.capitalize
+    else
+      ""
+    end
+  end
 end
