@@ -18,7 +18,7 @@ class Event
   belongs_to :user
 
   has_one :photo,  		  :as => :photoble,       dependent: :destroy
-
+  has_many :friends
   validates_presence_of :name, :location, :event_date, :description, :friend_ids
 
   scope :upcomming_events, -> {where(:created_at.gte => Time.zone.now).order_by('created_at ASC')}
@@ -32,7 +32,7 @@ class Event
 
   def date
     dt = self.event_date
-    if dt.present
+    if dt.present?
       dt.strftime("%d %B %H:%M%P")
     else
       ""

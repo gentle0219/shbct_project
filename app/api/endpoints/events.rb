@@ -57,7 +57,7 @@ module Endpoints
         if user.present?
           events = user.events.upcoming_events
           if events.present?
-            {success: events.map{|e| {name:e.name,user_name:e.user.user_name,date:e.date,location:e.location,img:e.main_img}}}
+            {success: events.map{|e| {id:e.id.to_s,name:e.name,user_name:e.user.user_name,date:e.date,location:e.location,img:e.main_img}}}
           else
             {failure: "cannot find your events"}
           end
@@ -77,7 +77,7 @@ module Endpoints
         if user.present?
           events = user.events.previous_events
           if events.present?
-            {success: events.map{|e| {name:e.name,user_name:e.user.user_name,date:e.date,location:e.location,img:e.main_img}}}
+            {success: events.map{|e| {id:e.id.to_s,name:e.name,user_name:e.user.user_name,date:e.date,location:e.location,img:e.main_img}}}
           else
             {failure: "cannot find your events"}
           end
@@ -97,7 +97,27 @@ module Endpoints
         if user.present?
           events = user.events.last_events
           if events.present?
-            {success: events.map{|e| {name:e.name,user_name:e.user.user_name,date:e.date,location:e.location,img:e.main_img}}}
+            {success: events.map{|e| {id:e.id.to_s,name:e.name,user_name:e.user.user_name,date:e.date,location:e.location,img:e.main_img}}}
+          else
+            {failure: "cannot find your events"}
+          end
+        else
+          {:failure => "cannot find user"}
+        end
+      end
+
+      # Get events photos
+      # GET: /api/v1/events/event_photos
+      # parameters:
+      #   token:      String *required
+      # results: 
+      #   return my event's photo list
+      get :event_photos do
+        user = User.find_by_token params[:token]
+        if user.present?
+          events = user.events
+          if events.present?
+            {success: events.map{|e| {id:e.id.to_s, name:e.name, img:e.main_img}}}
           else
             {failure: "cannot find your events"}
           end

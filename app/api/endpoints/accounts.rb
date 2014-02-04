@@ -217,7 +217,7 @@ module Endpoints
       get :friends do
         user = User.find_by_token params[:token]        
         if user.present?
-          friends = user.friends.map{|f| {id:f.id,name:f.name,email:f.email,avatar:f.avatar_url}}
+          friends = user.friends.map{|f| {id:f.id.to_s,name:f.name,email:f.email,avatar:f.avatar_url}}
           {success: friends}
         else
           {:failure => "cannot find user"}

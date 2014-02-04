@@ -72,6 +72,7 @@ class User
 
   has_many :friends
   has_many :events
+  has_many :devices
 
   def self.search(search)
     if search.present?      

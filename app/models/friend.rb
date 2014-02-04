@@ -12,7 +12,7 @@ class Friend
   field :from_social,   :type => String
 
   belongs_to :user
-
+  belongs_to :event
   def avata_url
     if self.avatar.url.nil?
       ""

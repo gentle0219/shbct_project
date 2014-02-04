@@ -21,10 +21,10 @@
             %td= event.user.user_name
             %td= event.friends.count
             %td
-              = link_to(edit_admin_merchant_path(merchant), class: 'btn btn-mini') do
-                %i.icon-pencil
-              = link_to(admin_merchant_path(merchant), class: 'btn btn-mini', method: :delete, data: {confirm: "Are you sure"}) do
-                %i.icon-trash
+              /= link_to(edit_admin_event_path(event), class: 'btn btn-mini') do
+              /  %i.icon-pencil
+              /= link_to(admin_event_path(event), class: 'btn btn-mini', method: :delete, data: {confirm: "Are you sure"}) do
+              /  %i.icon-trash
       %tfoot
         %tr
           %td{:colspan=>6}

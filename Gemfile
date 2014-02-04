@@ -42,6 +42,15 @@ gem 'unf'
 gem 'mini_magick'
 
 
+gem 'redis'
+gem 'resque', '~> 2.0.0.pre.1', github: "resque/resque"
+
+gem 'houston'
+gem 'pushmeup'
+#gem 'apn_on_rails'
+#gem 'c2dm_on_rails'
+
+
 #Use Grape for API
 gem 'grape'
 
@@ -62,6 +71,7 @@ group :development do
   gem 'rails_layout'
   gem 'debugger'
   gem 'letter_opener'
+  #gem 'rails-erd'
 end
 
 group :test do
