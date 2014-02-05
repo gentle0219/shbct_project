@@ -165,7 +165,136 @@ module Endpoints
         end
       end
 
+      # Accept Event
+      # POST: /api/v1/events/accept_event
+      # parameters:
+      #   token:            String *required
+      #   event_id:         String *required
+      # results: 
+      #   return success string
+      post :accept_event do
+        user  = User.find_by_token params[:token]        
+        if user.present?
+          event = event.find(params[:event_id])          
+          if event.accept(user)
+            {success: "successfully accepted event"}
+          else
+            {:failure => "cannot accept event"}
+          end
+        else
+          {:failure => "cannot find user"}
+        end
+      end
 
+
+      # Unaccept Event
+      # POST: /api/v1/events/unaccept_event
+      # parameters:
+      #   token:            String *required
+      #   event_id:         String *required
+      # results: 
+      #   return success string
+      post :unaccept_event do
+        user  = User.find_by_token params[:token]        
+        if user.present?
+          event = event.find(params[:event_id])
+          if event.unaccept(user)
+            {success: "successfully unaccepted event"}
+          else
+            {:failure => "cannot unaccept event"}
+          end
+        else
+          {:failure => "cannot find user"}
+        end
+      end
+
+      # Invited friends
+      # GET: /api/v1/events/invited_friends
+      # parameters:
+      #   token:            String *required
+      #   event_id:         String *required
+      # results: 
+      #   return success string
+      get :invited_friends do
+        user  = User.find_by_token params[:token]        
+        if user.present?
+          event = event.find(params[:event_id])
+          firneds = event.invited_friends.map{|f| {id:f.id.to_s,name:f.name,email:f.email,avatar:f.avatar_url,accepted:f.accepted_event(event)}}
+          if friends.present?
+            {success: friends}
+          else
+            {:failure => "cannot find invited friends"}
+          end
+        else
+          {:failure => "cannot find user"}
+        end
+      end
+
+      # Accepted friends
+      # GET: /api/v1/events/accepted_friends
+      # parameters:
+      #   token:            String *required
+      #   event_id:         String *required
+      # results: 
+      #   return success string
+      get :accepted_friends do
+        user  = User.find_by_token params[:token]        
+        if user.present?
+          event = event.find(params[:event_id])
+          firneds = event.accepted_friends.map{|f| {id:f.id.to_s,name:f.name,email:f.email,avatar:f.avatar_url,accepted:f.accepted_event(event)}}
+          if friends.present?
+            {success: friends}
+          else
+            {:failure => "cannot find accepted friends"}
+          end
+        else
+          {:failure => "cannot find user"}
+        end
+      end
+
+      # UnAccepted friends
+      # GET: /api/v1/events/unaccepted_friends
+      # parameters:
+      #   token:            String *required
+      #   event_id:         String *required
+      # results: 
+      #   return success string
+      get :accepted_friends do
+        user  = User.find_by_token params[:token]        
+        if user.present?
+          event = event.find(params[:event_id])
+          firneds = event.unaccepted_friends.map{|f| {id:f.id.to_s,name:f.name,email:f.email,avatar:f.avatar_url,accepted:f.accepted_event(event)}}
+          if friends.present?
+            {success: friends}
+          else
+            {:failure => "cannot find unaccepted friends"}
+          end
+        else
+          {:failure => "cannot find user"}
+        end
+      end
+
+      # Have not rsvp friends
+      # GET: /api/v1/events/have_not_rsvp_friends
+      # parameters:
+      #   token:            String *required
+      #   event_id:         String *required
+      # results: 
+      #   return success string
+      get :have_not_rsvp_friends do
+        user  = User.find_by_token params[:token]        
+        if user.present?
+          event = event.find(params[:event_id])
+          firneds = event.have_not_rsvp_friends.map{|f| {id:f.id.to_s,name:f.name,email:f.email,avatar:f.avatar_url,accepted:f.accepted_event(event)}}
+          if friends.present?
+            {success: friends}
+          else
+            {:failure => "cannot find have not rsvp friends"}
+          end
+        else
+          {:failure => "cannot find user"}
+        end
+      end
 
 
     end
