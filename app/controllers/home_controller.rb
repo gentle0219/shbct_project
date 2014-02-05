@@ -59,8 +59,12 @@ class HomeController < ApplicationController
       user = User.any_of({:email=>email},{:auth_token => params[:token]}).first
       if user.present?
         user.update_attributes( user_name:user_name, phone:phone, )
-        user = sign_in(:user, user)
-        render json: {:success => user.authentication_token}
+        if sign_in(:user, user)
+          user_info={id:user.id.to_s, user_name:user.user_name,email:user.email,token:user.auth_token, auth_id:user.authentication_token,social:user.from_social}
+          render json: {:success => user_info}
+        else
+          render json: {:failure => 'cannot login'}
+        end
       else
           user = User.new(email:email,
               auth_token:params[:token],
@@ -69,8 +73,12 @@ class HomeController < ApplicationController
               from_social:from_social,
               phone:phone)
         if user.save
-        	user = sign_in(:user, user)
-          render json: {:success => user.authentication_token}
+        	if sign_in(:user, user)
+            user_info={id:user.id.to_s, user_name:user.user_name,email:user.email,token:user.auth_token, auth_id:user.authentication_token,social:user.from_social}
+            render json: {:success => user_info}
+          else
+            render json: {:failure => 'cannot login'}
+          end
         else
           render :json => {:failure => user.errors.messages}
         end
@@ -81,8 +89,12 @@ class HomeController < ApplicationController
       end
       user = User.new(email:email,password:params[:password], user_name:user_name, phone:phone)
       if user.save
-      	user = sign_in(:user, user)
-        render :json => {:success => user.authentication_token}
+      	if sign_in(:user, user)
+          user_info={id:user.id.to_s, user_name:user.user_name,email:user.email,token:user.auth_token, auth_id:user.authentication_token,social:user.from_social}
+          render :json => {:success => user_info}
+        else
+          render json: {:failure => 'cannot login'}
+        end        
       else
         render :json => {:failure => 'failure not created'}
       end
