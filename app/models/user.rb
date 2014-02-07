@@ -47,8 +47,6 @@ class User
   field :role,                      :type => String
   field :active,                    :type => Boolean,   :default => true
 
-  field :from_social,               :type => String,    :default => ""     # Social login status
-
 
   field :auth_token,                :type => String
   field :authentication_token,      :type => String
@@ -71,9 +69,7 @@ class User
   field :event_changes,             :type => Boolean,   :default => true
 
   has_many :friends
-  has_many :events
-  has_many :devices
-
+  
   def self.search(search)
     if search.present?      
       users = User.or({ :email => /.*#{search}*./ }, { :user_name => /.*#{search}*./ })
@@ -99,11 +95,4 @@ class User
     User.where(:authentication_token=>token).first
   end  
 
-  def social_state
-    if from_social.present?
-      from_social.capitalize
-    else
-      ""
-    end
-  end
 end

@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def host_name
     if Rails.env.production?
-      "http://headcountapp.herokuapp.com"
+      "http://shbct.herokuapp.com"
     else
       "http://192.168.0.55:3005"
     end

@@ -1,3 +1,3 @@
 # Be sure to restart your server when you modify this file.
 
-Headcountapp::Application.config.session_store :cookie_store, key: '_headcountapp_session'
+Shbct::Application.config.session_store :cookie_store, key: '_shbct_session'

@@ -1,7 +1,7 @@
 .container
   .row.first-row
     .span8
-      %h3 HeadCount Users
+      %h3 SHBCT Users
     .span4{style:'margin-top:20px;'}
       = form_tag admin_users_path, method: 'get', :class=>'form-search', :id=>'user_search_form' do
         .input.input-prepend{style:'width:80%;'}
@@ -17,18 +17,14 @@
         %tr
           %th Email            
           %th User Name            
-          %th Logged in via            
           %th App Visits            
-          %th Event's Count
           %th Actions
       %tbody
         - @users.reject{|u| User::ROLES.include?(u.role)}.each do |u|
           %tr
             %td= u.email.index('@')==49 ? u.email[13..21]+'@twitter.com' : u.email
             %td= u.user_name
-            %td= u.social_state
             %td= u.sign_in_count
-            %td= u.events.count
             %td
               = link_to(admin_edit_user_path(u), class: 'btn btn-mini', :"data-no-turbolink"=>true) do
                 %i.icon-book

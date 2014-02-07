@@ -22,6 +22,9 @@ gem 'bootstrap-datepicker-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+# Use parsley for front end validate
+gem 'parsley-rails'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
@@ -44,12 +47,6 @@ gem 'mini_magick'
 
 gem 'redis'
 gem 'resque', '~> 2.0.0.pre.1', github: "resque/resque"
-
-gem 'houston'
-gem 'pushmeup'
-#gem 'apn_on_rails'
-#gem 'c2dm_on_rails'
-
 
 #Use Grape for API
 gem 'grape'

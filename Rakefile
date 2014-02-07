@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Headcountapp::Application.load_tasks
+Shbct::Application.load_tasks

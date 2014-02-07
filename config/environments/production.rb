@@ -1,4 +1,4 @@
-Headcountapp::Application.configure do
+Shbct::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -93,6 +93,6 @@ Headcountapp::Application.configure do
       :authentication => :plan,
       :enable_starttls_auto => true}
 
-  config.action_mailer.default_url_options = {:host => 'headcountapp.herokuapp.com'}
+  config.action_mailer.default_url_options = {:host => 'shbct.herokuapp.com'}
 
 end
