@@ -28,12 +28,31 @@
 	}
 }
 
+.navbar-fixed-top{
+	.container{
+		.brand{
+			margin: 0px;
+			padding: 0px;
+		}
+	}
+}
+
+
 .signin_page{
-	border: 1px solid #DDDDDD;
-  border-radius: 10px;
-  margin: 10% auto auto;
-  padding: 20px;
-  width: 450px;
+	margin: 10% auto auto;  
+  width: 260px;
+  .page-border{
+  	border: 1px solid #DDDDDD;
+  	border-radius: 10px;
+  	padding: 20px;
+  }
+  .title{
+  	text-align: center;
+  	margin: 5px 5px;
+  }
+  .sigin-page-form{
+  	margin-bottom: 0px;
+  }
 }
 
 .signup_page{
