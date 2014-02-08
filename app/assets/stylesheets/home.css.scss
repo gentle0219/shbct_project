@@ -34,6 +34,20 @@
 			margin: 0px;
 			padding: 0px;
 		}
+		.pull-right > li > a {
+			float: right;
+			font-size: 12px;
+			padding: 3px;			
+		}
+		.pull-right{
+			.form-search{
+				#search{
+					font-size: 12px;
+    			margin-top: 0;
+    			padding-left: 25px;
+				}				
+			}
+		}
 	}
 }
 

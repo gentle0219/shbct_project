@@ -19,5 +19,12 @@
       %li
         = link_to "Admin Dashboard", "/admin"    
     %li
-      = link_to "Log out", destroy_user_session_path, :method => :delete
+      = link_to "Sign out", destroy_user_session_path, :method => :delete
+      = link_to "Upgrades", '#'
+      = link_to "Account", '#'
+      = link_to "New features", '#'      
+      
+      = form_tag root_path, method: 'get', :class=>'form-search navbar-form', :id=>'user_search_form' do        
+        %i.icon-search{style:'left: 5px;position: absolute;top: 34px;'}       
+        = text_field_tag 'search', params[:search], :class=>'span3', style:'', placeholder:'Jump to a project, persor, label, or search...'
   
